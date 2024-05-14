@@ -25,7 +25,7 @@ pipeline {
         
         stage('SCM Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/naman-6/Boardgame.git'
+                git branch: 'main', url: 'https://github.com/naman-6/Board-Game-devsecops.git'
             }
         }
         
