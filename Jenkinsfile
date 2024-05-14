@@ -77,20 +77,20 @@ pipeline {
             }
         }
         
-        stage('Publish Artifact: Nexus') {
-            steps {
-                script {
-                    withMaven(globalMavenSettingsConfig: 'global-settings', jdk: 'jdk', maven: 'maven', mavenSettingsConfig: '', traceability: true) {
-                        sh 'mvn deploy'
-                    }
-                }
-            }
-        }
+        // stage('Publish Artifact: Nexus') {
+        //     steps {
+        //         script {
+        //             withMaven(globalMavenSettingsConfig: 'global-settings', jdk: 'jdk', maven: 'maven', mavenSettingsConfig: '', traceability: true) {
+        //                 sh 'mvn deploy'
+        //             }
+        //         }
+        //     }
+        // }
         
         stage('Dependency Check: OWASP') {
             steps {
                 script {
-                    dependencyCheck additionalArguments: '--format HTML --scan target/', nvdCredentialsId: 'nvd-api-key', odcInstallation: 'owasp'
+                    dependencyCheck additionalArguments: '--format HTML --scan target/', nvdCredentialsId: 'nvd-api', odcInstallation: 'owasp'
                 }
             }
         }
