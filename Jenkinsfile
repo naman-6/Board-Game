@@ -124,33 +124,33 @@ pipeline {
             }
         }
         
-        // stage('Docker Image Cleanup') {
-        //     steps {
-        //         script {
-        //             sh 'docker rmi ${IMAGE_NAME}'
-        //             sh 'docker rmi ${IMAGE_NAME}:${IMAGE_TAG}'
-        //         }
-        //     }
-        // }
+        stage('Docker Image Cleanup') {
+            steps {
+                script {
+                    sh 'docker rmi ${IMAGE_NAME}'
+                    sh 'docker rmi ${IMAGE_NAME}:${IMAGE_TAG}'
+                }
+            }
+        }
 
-	// stage('Deploy to Kubernetes') {
- //            steps {
- //                script {
- //                    withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'k8s-cred', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://172.31.46.100:6443') {
-	// 	        sh "kubectl apply -f deployment-service.yml"
-	// 	    }
- //                }
- //            }
- //        }
+	stage('Deploy to Kubernetes') {
+            steps {
+                script {
+                    withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'k8s-cred', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://172.31.46.100:6443') {
+		        sh "kubectl apply -f deployment-service.yml"
+		    }
+                }
+            }
+        }
 
-	// stage('Verify the Deployment') {
- //            steps {
- //               withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'k8s-cred', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://172.31.46.100:6443') {
- //                        sh "kubectl get pods -n webapps"
- //                        sh "kubectl get svc -n webapps"
- //                }
- //            }
- //        }
+	stage('Verify the Deployment') {
+            steps {
+               withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'k8s-cred', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://172.31.46.100:6443') {
+                        sh "kubectl get pods -n webapps"
+                        sh "kubectl get svc -n webapps"
+                }
+            }
+        }
         
         
     }
