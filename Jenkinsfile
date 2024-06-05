@@ -136,7 +136,7 @@ pipeline {
 	// stage('Deploy to Kubernetes') {
  //            steps {
  //                script {
- //                    withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'k8s-cred', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://172.31.11.171:6443') {
+ //                    withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'k8s-cred', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://172.31.46.100:6443') {
 	// 	        sh "kubectl apply -f deployment-service.yml"
 	// 	    }
  //                }
@@ -145,7 +145,7 @@ pipeline {
 
 	// stage('Verify the Deployment') {
  //            steps {
- //               withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'k8s-cred', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://172.31.11.171:6443') {
+ //               withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'k8s-cred', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://172.31.46.100:6443') {
  //                        sh "kubectl get pods -n webapps"
  //                        sh "kubectl get svc -n webapps"
  //                }
